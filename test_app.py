@@ -35,9 +35,16 @@ class BoggleAppTestCase(TestCase):
 
         with self.client as client:
             resp = client.post('api/new-game')
-            json_to_dict = resp.get_json()
-        
-            breakpoint()
-            self.assertIn('board', json_to_dict)
-            self.assertIn('gameId', json_to_dict)
+            parsed = resp.get_json()
+
+            board = parsed.get("board")
+            list_in_board = board[0]
+            game_id = parsed.get("game_id")
+
+            #tests if: 
+            # -the object is a dict 
+            # -each key return the correct value type
+            self.assertIs(list, type(board))
+            self.assertIs(list, type(list_in_board))
+            self.assertIs(str, type(game_id))
 
