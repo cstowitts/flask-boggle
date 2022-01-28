@@ -27,7 +27,7 @@ class BoggleAppTestCase(TestCase):
 
             self.assertEqual(response.status_code, 200)
             #bo
-            self.assertIn('<!-- boggle-homepage -->', html)
+            self.assertIn('<!-- boggle-homepage: used in test -->', html)
             # test that you're getting a template
 
     def test_api_new_game(self):
