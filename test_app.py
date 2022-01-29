@@ -48,3 +48,6 @@ class BoggleAppTestCase(TestCase):
             self.assertIs(list, type(list_in_board))
             self.assertIs(str, type(game_id))
 
+            #tests if:
+            #route stores new game in the games dict
+            self.assertIn(game_id, games)
