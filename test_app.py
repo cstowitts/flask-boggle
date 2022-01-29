@@ -51,3 +51,18 @@ class BoggleAppTestCase(TestCase):
             #tests if:
             #route stores new game in the games dict
             self.assertIn(game_id, games)
+
+    def test_api_score_word(self):
+        """Test if user input is:
+        a valid word
+        and on board"""
+
+        with self.client as client:
+            resp = client.post("api/score-word")
+            parsed = resp.get_json()
+
+            game_id = parsed.get("game_id")
+            word = parsed.get("word")
+
+        #mutate board using game_id to extract the words you want
+            

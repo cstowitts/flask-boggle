@@ -32,10 +32,10 @@ def new_game():
 def score_word():
     game_id = request.json["game_id"]
     word = request.json["word"]
-    current_game = games[game_id]
+    current_game = games.get(game_id, "Not found")
 
     #checks if the word is in current game's word_list
-    if not current_game.check_word_in_word_list(word):
+    if not current_game.is_word_in_word_list(word):
         return jsonify({"result": "not-word"})
     elif not current_game.check_word_on_board(word):
         return jsonify({"result": "not-on-board"})
